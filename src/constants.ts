@@ -1,5 +1,11 @@
-const constants = {
-  readmeUrl: '/repos/{owner}/{repo}/readme',
+const readmeAPI = '/repos/{owner}/{repo}/readme';
+const bookMap = {
+  btc: {
+    repoName: 'bitcoinbook',
+  },
+  eth: {
+    repoName: 'ethereumbook',
+  },
 };
 
-export default constants;
+export { bookMap, readmeAPI };

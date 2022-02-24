@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -10,8 +10,16 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('/read/repo')
-  async readRepo(): Promise<any> {
-    return this.appService.parseResponse();
+  @Get('/book/ticker/:name')
+  async readRepo(@Param('name') name: string): Promise<any> {
+    return this.appService.parseResponse(name);
+  }
+
+  @Get('/book/ticker/:tickerName/chapter/:chapterNumber')
+  async getChapter(@Param() param): Promise<any> {
+    return this.appService.parseChapterResponse(
+      param.tickerName,
+      param.chapterNumber,
+    );
   }
 }
